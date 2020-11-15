@@ -6,10 +6,11 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
+import LandingPage from './pages/LandingPage/LandingPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import PostsListPage from './pages/PostsListPage';
 
 import './App.css';
 
@@ -46,7 +47,7 @@ class App extends React.Component {
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/" component={LandingPage} />
               </Switch>
             </div>
           </div>
