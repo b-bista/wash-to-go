@@ -13,6 +13,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import PostsListPage from './pages/PostsListPage';
 
 import './App.css';
+import EditProfile from './pages/EditAccountPage/EditAccount';
 
 
 function Navigation(props) {
@@ -28,6 +29,11 @@ function Navigation(props) {
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/EditProfile">
+            Edit Profile
           </NavLink>
         </li>
       </ul>
@@ -47,6 +53,7 @@ class App extends React.Component {
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/EditProfile" component={EditProfile} />
                 <Route path="/" component={LandingPage} />
               </Switch>
             </div>
