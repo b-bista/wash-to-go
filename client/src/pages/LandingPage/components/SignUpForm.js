@@ -99,6 +99,7 @@ class SignUpForm extends React.Component {
                 />
             </form>
 
+            <a onClick={this.props.toggleUser}>Already registered? Click here to log in</a>
         </div>
         
     );

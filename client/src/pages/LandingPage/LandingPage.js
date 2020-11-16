@@ -5,21 +5,21 @@ import LoginForm from './components/LoginForm'
 
 class LandingPage extends React.Component {
     state = {
-      newUser: true
+      newUser: false
     }
 
-    newUserToggle (e) {
+    newUserToggle = (e) => {
       e.preventDefault();
-      this.setState({newUser: !this.state.newUser})
+      this.setState({newUser: !this.state.newUser});
     }
   
     render() {
-      
       if (this.state.newUser)
         return <SignUpForm toggleUser={this.newUserToggle}/>;
       else
-        return <LoginForm/>;
+        return <LoginForm toggleUser={this.newUserToggle}/>;
     }
+
   }
   
   export default LandingPage;

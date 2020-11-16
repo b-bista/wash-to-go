@@ -21,6 +21,10 @@ class LoginForm extends React.Component {
   render() {
 
     return (
+      <div>
+
+        <p>Log in to begin finding laundry service near you!</p>
+        
         <form>
             <label>
                 Email
@@ -46,6 +50,11 @@ class LoginForm extends React.Component {
             onClick={this.login}
             />
         </form>
+
+        <a onClick={this.props.toggleUser}>Already registered? Click here to log in</a>
+
+      </div>
+        
     );
   }
 }
