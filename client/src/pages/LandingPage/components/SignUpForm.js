@@ -49,7 +49,8 @@ class SignUpForm extends React.Component {
                         <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control
-                            type="text"  
+                            type="text"
+                            placeholder="John"
                             name="firstName"
                             value={this.state.firstName}
                             onChange={this.handleChange} 
@@ -57,12 +58,12 @@ class SignUpForm extends React.Component {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridLastName">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Last Name</Form.Label>
                         <Form.Control 
                             type="text" 
-                            placeholder="Password" 
+                            placeholder="Smith" 
                             name="password"
-                            value={this.state.password}
+                            value={this.state.lastName}
                             onChange={this.handleChange}
                         />
                         </Form.Group>
@@ -166,8 +167,11 @@ class SignUpForm extends React.Component {
                         </Form.Group>
                     </Form.Row>
 
-                    <Button variant="primary" type="submit">
-                        Sign Up
+                    <Button 
+                    variant="primary" 
+                    type="submit"
+                    onClick={(e)=>{}}>
+                      Sign Up
                     </Button>
                 </Form>
 

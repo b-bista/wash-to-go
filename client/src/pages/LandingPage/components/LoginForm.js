@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, Button, Col, Card, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class LoginForm extends React.Component {
   state = {
@@ -21,39 +22,46 @@ class LoginForm extends React.Component {
   render() {
 
     return (
-      <div>
+      <Card>
+            <Card.Body>
+                <p>Log in and begin finding laundry service near you!</p>
 
-        <p>Log in to begin finding laundry service near you!</p>
-        
-        <form>
-            <label>
-                Email
-                <input
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-                />
-            </label>
-            <label>
-                Password
-                <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-                />
-            </label>
-            <input 
-            type="submit" 
-            value="Submit"
-            onClick={this.login}
-            />
-        </form>
+                <Form>
+                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleChange} 
+                        />
+                        </Form.Group>
 
-        <a onClick={this.props.toggleUser}>Already registered? Click here to log in</a>
+                        <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Enter Password" 
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        </Form.Group>
 
-      </div>
+                    <Button 
+                    variant="primary" 
+                    type="submit"
+                    onClick={(e)=>{}}>
+                      Log in
+                    </Button>
+                </Form>
+
+                <a onClick={this.props.toggleUser}>Already registered? Click here to log in</a>
+
+            </Card.Body>
+            
+        </Card>
         
     );
   }
