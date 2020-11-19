@@ -3,7 +3,7 @@ import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootst
 
 
 
-function AboutUsPage(props) {
+function AccountPage(props) {
   return (
     <div>
   <Form class="form-inline">
@@ -48,4 +48,4 @@ function AboutUsPage(props) {
   );
 }
 
-export default AboutUsPage;
+export default AccountPage;
