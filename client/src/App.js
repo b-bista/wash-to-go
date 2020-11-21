@@ -7,6 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
+import HomePage from './pages/HomePage/HomePage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AccountPage';
@@ -48,9 +49,10 @@ class App extends React.Component {
     return (
         <Router>
           <Navigation />
-          <div className="container-fluid text-center">
+          <div className="container-fluid">
             <div className="row justify-content-center">
               <Switch>
+                <Route path="/home" component={HomePage} />
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AccountPage} />
