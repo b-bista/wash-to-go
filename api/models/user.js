@@ -34,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     User.hasOne(models.Customer);
-    User.hasOne(models.Deliverer);
-    User.hasOne(models.Partner);
+    //User.hasOne(models.Deliverer);
+    //User.hasOne(models.Partner);
   };
 
   User.beforeSave((user, options) => {

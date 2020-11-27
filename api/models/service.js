@@ -30,12 +30,12 @@ module.exports = (sequelize, DataTypes) => {
   },
   {
     sequelize,
-    modelName: 'customer'
+    modelName: 'service'
   });
 
   Service.associate = (models) => {
     // associations can be defined here
-    Service.belongsTo(models.Order);
+    // Service.belongsTo(models.Order);
 
   };
 

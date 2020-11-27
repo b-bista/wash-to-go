@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Customer } = require('../models');
 const passport = require('../middlewares/authentication');
 
 
@@ -21,9 +21,7 @@ router.post('/signup', (req, res) => {
       country: req.body.country
     }
   }, {
-    include: [{
-      association: User.Customer,
-    }]
+    include: [Customer]
   })
     .then((user) => {
       req.login(user, () => res.status(201).json(user));

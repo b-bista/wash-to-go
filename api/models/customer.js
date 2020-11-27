@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'}
     );
     
-    Customer.belongsToMany(models.Order);
+    Customer.hasMany(models.Order);
 
 
   };

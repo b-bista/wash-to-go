@@ -23,12 +23,12 @@ module.exports = (sequelize, DataTypes) => {
   },
   {
     sequelize,
-    modelName: 'customer'
+    modelName: 'order'
   });
 
   Order.associate = (models) => {
     // associations can be defined here
-    Order.hasOne(models.Customer);
+    Order.belongsTo(models.Customer);
     Order.hasMany(models.Service);
     //Order.hasOne(models.Partner);
     //Order.hasMany(models.Deliverer);
