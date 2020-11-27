@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // this lets us parse 'application/json' content in http requests

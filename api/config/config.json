@@ -1,15 +1,15 @@
 {
   "development": {
-    "username": "ctp_user",
-    "password": "ctp_pass",
-    "database": "app2019_development",
+    "username": "wtg_user",
+    "password": "wtg_pass",
+    "database": "wtg_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "ctp_user",
-    "password": "ctp_pass",
-    "database": "app2019_test",
+    "username": "wtg_user",
+    "password": "wtg_pass",
+    "database": "wtg_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
