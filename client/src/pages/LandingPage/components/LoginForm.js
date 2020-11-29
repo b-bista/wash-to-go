@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button, Col, Card, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
+import auth from '../../../services/auth';
+
 class LoginForm extends React.Component {
   state = {
     email: '',
@@ -16,7 +18,15 @@ class LoginForm extends React.Component {
   }
 
   login = (event) => {
-      //
+    event.preventDefault();
+    let { email, password } = this.state;
+    auth.authenticate(email, password)
+      .then((user) => {
+        this.setState({ redirectToReferrer: true });
+      })
+      .catch((err) => {
+        this.setState({ failed: true });
+      });
   }
 
   render() {
