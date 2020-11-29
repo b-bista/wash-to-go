@@ -1,5 +1,7 @@
-import React from 'react'
-import {Jumbotron, Button} from 'react-bootstrap'
+import React from 'react';
+import {Jumbotron, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 export default function HomePage() {
     return (
@@ -10,7 +12,10 @@ export default function HomePage() {
                 Click below to begin finding partnered laundromats near you at a pricepoint you prefer.
             </p>
             <p>
+                <Link exact to="/stores">
+
                 <Button variant="primary">Find Laundromats</Button>
+                </Link>
             </p>
         </Jumbotron>
     

@@ -12,7 +12,9 @@ import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AccountPage';
 import PostsListPage from './pages/PostsListPage';
+import PreviousOrdersPage from './pages/PreviousOrdersPage';
 import OrdersPage from './pages/OrdersPage';
+import OrderPage from './pages/OrderPage';
 
 import './App.css';
 import AccountPage from './pages/AccountPage';
@@ -25,7 +27,7 @@ function Navigation(props) {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
-            Order 
+            N/A 
           </NavLink>
         </li>
         <li className="nav-item">
@@ -34,10 +36,16 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/orders">
+          <NavLink className="nav-link" exact to="/previous-orders">
             Previous Orders
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/stores">
+            Order
+          </NavLink>
+        </li>
+
       </ul>
     </nav>
   );
@@ -52,12 +60,15 @@ class App extends React.Component {
           <div className="container-fluid">
             <div className="row justify-content-center">
               <Switch>
+                <Route path='/orders' component={OrderPage} />
+                <Route path="/stores" component={OrdersPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AccountPage} />
-                <Route path="/orders" component={OrdersPage} />
+                <Route path="/previous-orders" component={PreviousOrdersPage} />
                 <Route path="/" component={LandingPage} />
+                
               </Switch>
             </div>
           </div>
