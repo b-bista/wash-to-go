@@ -15,6 +15,8 @@ import PostsListPage from './pages/PostsListPage';
 import PreviousOrdersPage from './pages/PreviousOrdersPage';
 import OrdersPage from './pages/OrdersPage';
 import OrderPage from './pages/OrderPage';
+import OrderSummary from './pages/OrderSummary';
+import Ordered from './pages/Ordered';
 
 import './App.css';
 import AccountPage from './pages/AccountPage';
@@ -26,9 +28,6 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/">WashToGo</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            N/A 
-          </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
@@ -60,7 +59,9 @@ class App extends React.Component {
           <div className="container-fluid">
             <div className="row justify-content-center">
               <Switch>
+                <Route path='/ordered' component={Ordered} />
                 <Route path='/orders' component={OrderPage} />
+                <Route path='/summary' component={OrderSummary} />
                 <Route path="/stores" component={OrdersPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/posts/new" component={PostFormPage} />
@@ -68,6 +69,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AccountPage} />
                 <Route path="/previous-orders" component={PreviousOrdersPage} />
                 <Route path="/" component={LandingPage} />
+                
                 
               </Switch>
             </div>

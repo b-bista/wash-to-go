@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, Button} from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 
 export default function orderPage(){
@@ -14,7 +15,9 @@ export default function orderPage(){
                 <Card.Text>
                 $1.50
                 </Card.Text>
+                <Link exact to="/summary">
                 <Button variant="primary">Confirm </Button>
+                </Link>
             </Card.Body>
             </Card>
 
