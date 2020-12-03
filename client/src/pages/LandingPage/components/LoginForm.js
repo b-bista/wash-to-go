@@ -62,12 +62,12 @@ class LoginForm extends React.Component {
                     <Button 
                     variant="primary" 
                     type="submit"
-                    onClick={(e)=>{}}>
+                    onClick={this.login}>
                       Log in
                     </Button>
                 </Form>
 
-                <a onClick={this.props.toggleUser}>Already registered? Click here to log in</a>
+                <a onClick={this.props.toggleUser}>Don't have an account? Click here to sign up.</a>
 
             </Card.Body>
             
