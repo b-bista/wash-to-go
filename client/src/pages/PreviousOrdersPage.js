@@ -10,17 +10,17 @@ function PreviousOrdersPage(props){
     [
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg", 
-            store: "Store 1", 
+            store: "Tina's Laundromat & Dry Cleaners", 
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices efficitur augue, quis ultricies odio pharetra in."
         },
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg", 
-            store: "Store 2", 
+            store: "Grand Laundromat", 
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices efficitur augue, quis ultricies odio pharetra in."
         },
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg", 
-            store: "Store 3", 
+            store: "Clean Cycle Laundromat", 
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices efficitur augue, quis ultricies odio pharetra in."
         },
     ];
@@ -32,9 +32,9 @@ function PreviousOrdersPage(props){
             <Card.Img variant="top"  src={card.image} />
             <Card.Body>
                 <Card.Title>{card.store}</Card.Title>
-                <Card.Text>
+                {/* <Card.Text>
                 {card.description}
-                </Card.Text>
+                </Card.Text> */}
                 <Button variant="primary">Reorder</Button>
             </Card.Body>
             </Card>

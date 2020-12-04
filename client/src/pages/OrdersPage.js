@@ -11,17 +11,17 @@ function OrdersPage(props){
     [
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg",
-            store: "Store-1",
+            store: "Tina's Laundromat & Dry Cleaners",
             distance: "0.5 mile"
         },
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg",
-            store: "Store-2",
+            store: "Grand Laundromat",
             distance: "1 mile"
         },
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg",
-            store: "Store-3",
+            store: "Clean Cycle Laundromat",
             distance: "2.4 mile"
         },
     ];

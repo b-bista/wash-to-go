@@ -6,13 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model {}
 
   Order.init({
-    type: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1, 50],
-        notEmpty: true,
-      }
-    },
     status: {
       type: DataTypes.STRING,
       validate: {
@@ -20,6 +13,15 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
+    total: {
+      type: DataTypes.STRING
+    },
+    orderDate: {
+      type: DataTypes.STRING
+    },
+    comments: {
+      type: DataTypes.STRING
+    }
   },
   {
     sequelize,

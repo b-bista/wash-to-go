@@ -25,18 +25,8 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/">WashToGo</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            N/A 
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            Account
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/previous-orders">
-            Previous Orders
+          <NavLink className="nav-link" exact to="/home">
+            Home
           </NavLink>
         </li>
         <li className="nav-item">
@@ -44,7 +34,16 @@ function Navigation(props) {
             Order
           </NavLink>
         </li>
-
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/edit-account">
+            Edit Account Info
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/previous-orders">
+            Previous Orders
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
@@ -59,14 +58,17 @@ class App extends React.Component {
           <div className="container-fluid">
             <div className="row justify-content-center">
               <Switch>
+                <Route path='/ordered' component={Ordered} />
                 <Route path='/orders' component={OrderPage} />
+                <Route path='/summary' component={OrderSummary} />
                 <Route path="/stores" component={OrdersPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AccountPage} />
+                <Route path="/edit-account" component={AccountPage} />
                 <Route path="/previous-orders" component={PreviousOrdersPage} />
                 <Route path="/" component={LandingPage} />
+                
                 
               </Switch>
             </div>
