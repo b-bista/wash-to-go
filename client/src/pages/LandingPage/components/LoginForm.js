@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { Form, Button, Col, Card, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 import auth from '../../../services/auth';
@@ -22,7 +23,7 @@ class LoginForm extends React.Component {
     let { email, password } = this.state;
     auth.authenticate(email, password)
       .then((user) => {
-        this.setState({ redirectToReferrer: true });
+        this.props.loginToggle();
       })
       .catch((err) => {
         this.setState({ failed: true });
@@ -58,13 +59,15 @@ class LoginForm extends React.Component {
                             onChange={this.handleChange}
                         />
                         </Form.Group>
-
-                    <Button 
-                    variant="primary" 
-                    type="submit"
-                    onClick={this.login}>
-                      Log in
-                    </Button>
+                    <Link to='/home'>
+                      <Button 
+                      variant="primary" 
+                      type="submit"
+                      onClick={this.login}>
+                        Log in
+                      </Button>
+                    </Link>
+                    
                 </Form>
 
                 <a onClick={this.props.toggleUser}>Don't have an account? Click here to sign up.</a>

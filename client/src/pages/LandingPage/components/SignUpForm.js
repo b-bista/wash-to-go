@@ -48,35 +48,22 @@ class SignUpForm extends React.Component {
 //   }
 
 signUp = (event) => {
+    let {email,
+        password,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+        city,
+        state,
+        zipCode,
+        country} = this.state;
+
     if (this.state.passMatch) {
         event.preventDefault();
-        fetch('/api/auth/signup', { 
-            method: 'POST',
-            //mode: 'cors', Included initially for
-            body: JSON.stringify({
-            email: this.state.email,
-            password: this.state.password,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            phone: this.state.phone,
-            address1: this.state.address1,
-            address2: this.state.address2,
-            city: this.state.city,
-            state: this.state.state,
-            zipCode: this.state.zipCode,
-            country: this.state.country
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then((response) => {
-            console.log(response);
-            return response.json();
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        auth.signup(email, password, firstName, lastName, phone, 
+            address1, address2, city, state, zipCode, country);
     }
     else {
         console.log('Password doesnt match');
