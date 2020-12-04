@@ -15,7 +15,6 @@ import PostsListPage from './pages/PostsListPage';
 import PreviousOrdersPage from './pages/PreviousOrdersPage';
 import OrdersPage from './pages/OrdersPage';
 import OrderPage from './pages/OrderPage';
-
 import './App.css';
 import AccountPage from './pages/AccountPage';
 

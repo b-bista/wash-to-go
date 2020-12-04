@@ -1,3 +1,4 @@
+import { GoogleMap } from '@react-google-maps/api';
 import React from 'react';
 import {Card, Button} from "react-bootstrap";
 

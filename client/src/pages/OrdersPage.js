@@ -1,10 +1,12 @@
 import React from 'react';
 import {Card, Button} from "react-bootstrap";
 import { Link } from 'react-router-dom';
-
+// import GoogleMap from '../components/map';
+import SimpleMap from '../components/maps';
 
 function OrdersPage(props){
 
+    
     const cardInfo = 
     [
         {
@@ -26,8 +28,8 @@ function OrdersPage(props){
 
     const renderCard = (card, index) => {
         return (
-        
             <div class="card-deck">
+            <SimpleMap/>
             <Card style={{width:"400px" }} key={index} >
             <Card.Img variant="top"  src={card.image} />
             <Card.Body>
@@ -56,7 +58,8 @@ function OrdersPage(props){
         <div>
             {cardInfo.map(renderCard)}
         </div>
-    )
+    );
+  
 }
 
 export default OrdersPage;
