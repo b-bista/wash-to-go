@@ -44,4 +44,10 @@ router.post('/logout', (req, res) => {
   res.status(200).json({ message: 'Logout successful' });
 })
 
+router.get('/protected',
+passport.isAuthenticated(),
+(req, res) => {
+  res.status(200).json({ message: 'Authenticated' });
+});
+
 module.exports = router;

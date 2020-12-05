@@ -76,18 +76,18 @@ const auth = {
             'Content-Type': 'application/json',
         }
         })
-          .then((response) => {
-            console.log(response);
-            if(!response.ok) {
-              throw new Error('Register Failed');
-            }
-            this.isAuthenticated = true;
-            return response.json();
-          })
-          .then((body) => {
-            console.log(body);
-            return body;
-          });
+        .then((response) => {
+          console.log(response);
+          if(!response.ok) {
+            throw new Error('Register Failed');
+          }
+          this.isAuthenticated = true;
+          return response.json();
+        })
+        .then((body) => {
+          console.log(body);
+          return body;
+        });
       }
   }
   
