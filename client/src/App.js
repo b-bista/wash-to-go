@@ -13,13 +13,18 @@ import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AccountPage';
 import PostsListPage from './pages/PostsListPage';
 import PreviousOrdersPage from './pages/PreviousOrdersPage';
+import Ordered from './pages/Ordered';
+import OrderSummary from './pages/OrderSummary'
 import OrdersPage from './pages/OrdersPage';
 import OrderPage from './pages/OrderPage';
 import './App.css';
 import AccountPage from './pages/AccountPage';
 
 
+
+
 function Navigation(props) {
+  
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">WashToGo</Link>
