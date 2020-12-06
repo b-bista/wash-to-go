@@ -3,9 +3,9 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-  class Service extends Model {}
+  class OrderItem extends Model {}
 
-  Service.init({
+  OrderItem.init({
     name: {
       type: DataTypes.STRING,
       validate: {
@@ -13,30 +13,31 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    description: {
+    quantity: {
       type: DataTypes.STRING,
       validate: {
-        len: [1, 100],
+        len: [1, 50],
         notEmpty: true,
       }
     },
     price: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       validate: {
+        len: [1, 3],
         notEmpty: true,
       }
     }
   },
   {
     sequelize,
-    modelName: 'service'
+    modelName: 'orderItem'
   });
 
-  Service.associate = (models) => {
+  OrderItem.associate = (models) => {
     // associations can be defined here
-    Service.belongsTo(models.Business);
+    OrderItem.belongsTo(models.Order);
 
   };
 
-  return Service;
+  return OrderItem;
 };

@@ -6,6 +6,7 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
+import auth from './services/auth';
 import LandingPage from './pages/LandingPage/LandingPage';
 import HomePage from './pages/HomePage/HomePage';
 import PostFormPage from './pages/PostFormPage';
@@ -22,34 +23,51 @@ import './App.css';
 import AccountPage from './pages/AccountPage';
 
 
-function Navigation(props) {
-  return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">WashToGo</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/home">
-            Home
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/stores">
-            Order
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/edit-account">
-            Edit Account Info
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/previous-orders">
-            Previous Orders
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
-  );
+class Navigation extends React.Component {
+  
+  state = {
+    userLoggedIn: auth.isAuthenticated,
+  }
+
+  render () {
+    if (auth.isAuthenticated) {
+      return (
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+          <Link className="navbar-brand" to="/">WashToGo</Link>
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/home">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/stores">
+                Order
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/edit-account">
+                Edit Account Info
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/previous-orders">
+                Previous Orders
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      );
+    }
+    else
+    {
+      return (
+        <div>
+        </div>
+      )
+    }
+    
+  }
 }
 
 
