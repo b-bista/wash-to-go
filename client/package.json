@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-google-maps/api": "^1.13.0",
+    "date-fns": "^2.16.1",
+    "google-map-react": "^2.1.9",
+    "google-maps-react": "^2.0.6",
     "react": "^16.10.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.10.1",
+    "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "use-places-autocomplete": "^1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
