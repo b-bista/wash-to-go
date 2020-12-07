@@ -12,6 +12,11 @@ class LandingPage extends React.Component {
       e.preventDefault();
       this.setState({newUser: !this.state.newUser});
     }
+
+    isLoggedInToggle = (e) => {
+      e.preventDefault();
+      this.setState({isLoggedIn: !this.state.isLoggedIn});
+    }
   
     render() {
       if (this.state.newUser)

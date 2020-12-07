@@ -34,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
     User.hasOne(models.Customer);
-    User.hasOne(models.Business);
     //User.hasOne(models.Deliverer);
     //User.hasOne(models.Partner);
   };

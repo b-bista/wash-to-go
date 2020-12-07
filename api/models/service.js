@@ -13,16 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    description: {
+    quantity: {
       type: DataTypes.STRING,
       validate: {
-        len: [1, 100],
+        len: [1, 50],
         notEmpty: true,
       }
     },
     price: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       validate: {
+        len: [1, 3],
         notEmpty: true,
       }
     }
@@ -34,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Service.associate = (models) => {
     // associations can be defined here
-    Service.belongsTo(models.Business);
+    // Service.belongsTo(models.Order);
 
   };
 

@@ -3,7 +3,7 @@ import {Card, Button} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 // import GoogleMap from '../components/map';
 // import SimpleMap from '../components/maps';
-import MapFromScratch from "../components/mapFromScratch"
+import TheMap from "../components/GoogleMap";
 function OrdersPage(props){
 
     
@@ -29,7 +29,7 @@ function OrdersPage(props){
     const renderCard = (card, index) => {
         return (
             <div class="card-deck">
-            <MapFromScratch/>
+            
             <Card style={{width:"400px" }} key={index} >
             <Card.Img variant="top"  src={card.image} />
             <Card.Body>
@@ -57,6 +57,7 @@ function OrdersPage(props){
     return (
         <div>
             {cardInfo.map(renderCard)}
+            <TheMap/>
         </div>
     );
   
