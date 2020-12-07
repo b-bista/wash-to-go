@@ -17,8 +17,6 @@ import Ordered from './pages/Ordered';
 import OrderSummary from './pages/OrderSummary'
 import OrdersPage from './pages/OrdersPage';
 import OrderPage from './pages/OrderPage';
-import OrderSummary from './pages/OrderSummary';
-import Ordered from './pages/Ordered';
 import './App.css';
 import AccountPage from './pages/AccountPage';
 
