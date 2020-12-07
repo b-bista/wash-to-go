@@ -24,7 +24,6 @@ const auth = {
         })
         .then((body) => {
           this.isAuthenticated = true;
-          console.log(this.isAuthenticated);
           return body;
         });
     },
@@ -82,6 +81,7 @@ const auth = {
           if(!response.ok) {
             throw new Error('Register Failed');
           }
+          this.isAuthenticated = true;
           return response.json();
         })
         .then((body) => {
