@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const passport = require('../middlewares/authentication');
 const { route } = require('./auth');
-const { Customer, OrderItem, Business } = db;
+const { Order, Customer, OrderItem, Business } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -13,107 +13,100 @@ const { Customer, OrderItem, Business } = db;
 //    PUT    /posts/:id
 //    DELETE /posts/:id 
 
-// There are other styles for creating these route handlers, we typically
-// explore other patterns to reduce code duplication.
-// TODO: Can you spot where we have some duplication below?
-
 
 //Find all user orders
 router.get('/', (req,res) => {
-  Orders.findAll({})
+  Orders.findAll({where: {userId: req.user.id}})
     .then(posts => res.json(posts));
 });
 
-router.get('/getuser', (req,res) => {
-  if (req.user){
-    res.status(201).json(req.user)
-  }
-  else
-    res.status(400).json("No user")
-})
 
-
-router.post('/:businessId/createOrder',
+//handles creating an order
+router.post('/:businessId/createOrder', passport.isAuthenticated(),
   (req, res) => {
-    let { name, description, price } = req.body;
-    let userId = req.user.id;
+    let { status, total, orderDate, comments, orderItems } = req.body;
+    let user = req.user;
     let { businessId } = req.params;
 
-    Business.findByPk(businessId)
-    .then(business => {
-      business.createOrder({name, description, price});
+    Order.create({
+      status,
+      total,
+      orderDate,
+      comments,
+      orderItems
+    },{include: [OrderItem]})
+    .then(order => {
+      Customer.findOne({where: {userId: user.id}})
+      .then(customer => {
+        console.log(customer);
+        order.setCustomer(customer)
+      })
+      Business.findByPk(businessId)
+      .then (business => {
+        order.setBusiness(business);
+      })
     })
-    .then(service => {
-      res.status(201).json(service);
+    .then(res => {
+      res.json(res);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(400).json(err);
     });
-
-
-    
-    // Service.create({ name, description, price }, {include: {model: Business}})
-    //   .then(post => {
-    //     res.status(201).json(post);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json(err);
-    //   });
   }
 );
 
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(id)
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
+// router.get('/:id', (req, res) => {
+//   const { id } = req.params;
+//   Order.findByPk(id)
+//     .then(order => {
+//       if(!order) {
+//         return res.sendStatus(404);
+//       }
 
-      res.json(post);
-    });
-});
-
-
-router.put('/:id',
-  passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
-    Post.findByPk(id)
-      .then(post => {
-        if(!post) {
-          return res.sendStatus(404);
-        }
-
-        post.content = req.body.content;
-        post.save()
-          .then(post => {
-            res.json(post);
-          })
-          .catch(err => {
-            res.status(400).json(err);
-          });
-      });
-  }
-);
+//       res.json(order);
+//     });
+// });
 
 
-router.delete('/:id',
-  passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
-    Post.findByPk(id)
-      .then(post => {
-        if(!post) {
-          return res.sendStatus(404);
-        }
+// router.put('/:id',
+//   passport.isAuthenticated(),
+//   (req, res) => {
+//     const { id } = req.params;
+//     Post.findByPk(id)
+//       .then(post => {
+//         if(!post) {
+//           return res.sendStatus(404);
+//         }
 
-        post.destroy();
-        res.sendStatus(204);
-      });
-  }
-);
+//         post.content = req.body.content;
+//         post.save()
+//           .then(post => {
+//             res.json(post);
+//           })
+//           .catch(err => {
+//             res.status(400).json(err);
+//           });
+//       });
+//   }
+// );
+
+
+// router.delete('/:id',
+//   passport.isAuthenticated(),
+//   (req, res) => {
+//     const { id } = req.params;
+//     Post.findByPk(id)
+//       .then(post => {
+//         if(!post) {
+//           return res.sendStatus(404);
+//         }
+
+//         post.destroy();
+//         res.sendStatus(204);
+//       });
+//   }
+// );
 
 
 module.exports = router;

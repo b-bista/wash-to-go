@@ -18,19 +18,15 @@ import OrdersPage from './pages/OrdersPage';
 import OrderPage from './pages/OrderPage';
 import OrderSummary from './pages/OrderSummary';
 import Ordered from './pages/Ordered';
-
 import './App.css';
 import AccountPage from './pages/AccountPage';
 
 
 class Navigation extends React.Component {
   
-  state = {
-    userLoggedIn: auth.isAuthenticated,
-  }
-
   render () {
-    if (auth.isAuthenticated) {
+    // console.log(auth.isAuthenticated)
+    // if (auth.isAuthenticated) {
       return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
           <Link className="navbar-brand" to="/">WashToGo</Link>
@@ -58,14 +54,14 @@ class Navigation extends React.Component {
           </ul>
         </nav>
       );
-    }
-    else
-    {
-      return (
-        <div>
-        </div>
-      )
-    }
+    // }
+    // else
+    // {
+    //   return (
+    //     <div>
+    //     </div>
+    //   )
+    // }
     
   }
 }
@@ -89,8 +85,6 @@ class App extends React.Component {
                 <Route path="/edit-account" component={AccountPage} />
                 <Route path="/previous-orders" component={PreviousOrdersPage} />
                 <Route path="/" component={LandingPage} />
-                
-                
               </Switch>
             </div>
           </div>

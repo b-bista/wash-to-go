@@ -17,12 +17,14 @@ const { Service, Business } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
+//for retrieving all services
 router.get('/', (req,res) => {
   Service.findAll({})
     .then(posts => res.json(posts));
 });
 
 
+//For creating service from the back-end side
 router.post('/:businessId/createService',
   (req, res) => {
     let { name, description, price } = req.body;
@@ -38,71 +40,6 @@ router.post('/:businessId/createService',
     .catch(err => {
       res.status(400).json(err);
     });
-
-
-    
-    // Service.create({ name, description, price }, {include: {model: Business}})
-    //   .then(post => {
-    //     res.status(201).json(post);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json(err);
-    //   });
-  }
-);
-
-
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(id)
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
-
-      res.json(post);
-    });
-});
-
-
-router.put('/:id',
-  passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
-    Post.findByPk(id)
-      .then(post => {
-        if(!post) {
-          return res.sendStatus(404);
-        }
-
-        post.content = req.body.content;
-        post.save()
-          .then(post => {
-            res.json(post);
-          })
-          .catch(err => {
-            res.status(400).json(err);
-          });
-      });
-  }
-);
-
-
-router.delete('/:id',
-  passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
-    Post.findByPk(id)
-      .then(post => {
-        if(!post) {
-          return res.sendStatus(404);
-        }
-
-        post.destroy();
-        res.sendStatus(204);
-      });
-  }
-);
-
+  });
 
 module.exports = router;
