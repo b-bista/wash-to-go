@@ -19,7 +19,7 @@ import AccountPage from './pages/AccountPage';
 function Navigation(props) {
   
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3" >
       <Link className="navbar-brand" to="/">WashToGo</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">

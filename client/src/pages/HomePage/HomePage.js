@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 export default function HomePage() {
     return (
         
-        <Jumbotron>
+        <div class="text-center">
+         <Jumbotron className="">
             <h1>Hello there!</h1>
             <p>
                 Click below to begin finding partnered laundromats near you at a pricepoint you prefer.
@@ -17,7 +18,11 @@ export default function HomePage() {
                 <Button variant="primary">Find Laundromats</Button>
                 </Link>
             </p>
-        </Jumbotron>
+        </Jumbotron> 
+        
+        </div>
+        
+        
     
     )
 }
