@@ -12,7 +12,7 @@ export default function HomePage() {
                 Click below to begin finding partnered laundromats near you at a pricepoint you prefer.
             </p>
             <p>
-                <Link exact to="/stores">
+                <Link exact to="/order">
 
                 <Button variant="primary">Find Laundromats</Button>
                 </Link>

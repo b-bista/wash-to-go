@@ -59,14 +59,16 @@ class LoginForm extends React.Component {
                             onChange={this.handleChange}
                         />
                         </Form.Group>
-                    <Link to='/home'>
+
                       <Button 
                       variant="primary" 
                       type="submit"
                       onClick={this.login}>
+                      <Link to='/home'>
                         Log in
+                       </Link>
                       </Button>
-                    </Link>
+                    
                     
                 </Form>
 

@@ -13,19 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    quantity: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1, 50],
-        notEmpty: true,
-      }
-    },
     price: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1, 3],
-        notEmpty: true,
-      }
+      type: DataTypes.STRING
     }
   },
   {

@@ -63,7 +63,7 @@ signUp = (event) => {
     if (this.state.passMatch) {
         event.preventDefault();
         auth.signup(email, password, firstName, lastName, phone, 
-            address1, address2, city, state, zipCode, country);
+            address1, address2, city, state, zipCode, country)
     }
     else {
         console.log('Password doesnt match');

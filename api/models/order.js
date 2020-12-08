@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         len: [1, 50],
-        notEmpty: true,
+        notEmpty: false,
       }
     },
     total: {
@@ -31,8 +31,9 @@ module.exports = (sequelize, DataTypes) => {
   Order.associate = (models) => {
     // associations can be defined here
     Order.belongsTo(models.Customer);
-    Order.hasMany(models.Service);
-    //Order.hasOne(models.Partner);
+    Order.belongsTo(models.Business);
+    Order.hasMany(models.OrderItem);
+    
     //Order.hasMany(models.Deliverer);
   };
 

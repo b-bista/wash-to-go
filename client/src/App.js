@@ -8,10 +8,6 @@ import {
 } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import HomePage from './pages/HomePage/HomePage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AccountPage';
-import PostsListPage from './pages/PostsListPage';
 import PreviousOrdersPage from './pages/PreviousOrdersPage';
 import Ordered from './pages/Ordered';
 import OrderSummary from './pages/OrderSummary'
@@ -32,7 +28,7 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/stores">
+          <NavLink className="nav-link" exact to="/order">
             Order
           </NavLink>
         </li>
@@ -61,12 +57,10 @@ class App extends React.Component {
             <div className="row justify-content-center">
               <Switch>
                 <Route path='/ordered' component={Ordered} />
-                <Route path='/orders' component={OrderPage} />
+                <Route path='/order/:businessId' component={OrderPage} />
                 <Route path='/summary' component={OrderSummary} />
-                <Route path="/stores" component={OrdersPage} />
+                <Route path="/order" component={OrdersPage} />
                 <Route path="/home" component={HomePage} />
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/edit-account" component={AccountPage} />
                 <Route path="/previous-orders" component={PreviousOrdersPage} />
                 <Route path="/" component={LandingPage} />

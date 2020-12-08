@@ -4,10 +4,30 @@ import { Link } from 'react-router-dom';
 // import GoogleMap from '../components/map';
 // import SimpleMap from '../components/maps';
 import TheMap from "../components/GoogleMap";
-function OrdersPage(props){
 
-    
-    const cardInfo = 
+
+class OrdersPage extends React.Component{
+
+    state = {
+        stores: []
+    }
+
+    componentDidMount(){
+        fetch("/api/businesses/")
+        .then(res => res.json())
+        .then(businesses => {
+            // businnesses.forEach(store => {
+            //     store["long"] = "";
+            //     store["lat"] = "";
+            // });
+            this.setState({
+                stores: businesses
+            });
+        })
+        .catch(err => console.log("API ERROR: ", err));
+    }
+
+    cardInfo = 
     [
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg",
@@ -26,22 +46,26 @@ function OrdersPage(props){
         },
     ];
 
-    const renderCard = (card, index) => {
+    renderCard = (card, index) => {
+        const to = `/order/${card.id}`
         return (
             <div class="card-deck">
             
             <Card style={{width:"400px" }} key={index} >
-            <Card.Img variant="top"  src={card.image} />
+            <Card.Img variant="top"  src='https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg' />
             <Card.Body>
-                <Card.Title>{card.store}</Card.Title>
+                <Card.Title>{card.name}</Card.Title>
                 <Card.Text>
-                {card.description}
+                {`${card.address1}, ${card.address2}`}
                 </Card.Text>
                 <Card.Text>
-                {card.distance}
+                {`${card.city}, ${card.state}, ${card.zipCode}`}
                 </Card.Text>
                 <Card.Text>
-                <Link exact to="/orders">
+                    {Math.random().toPrecision(2)}
+                </Card.Text>
+                <Card.Text>
+                <Link exact to={to}>
                 <Button variant="primary">Order</Button>
                 </Link>
                 
@@ -54,13 +78,15 @@ function OrdersPage(props){
         );
     };
 
-    return (
-        <div>
-            {cardInfo.map(renderCard)}
-            <TheMap/>
-        </div>
-    );
-  
+    render () {
+        return (
+            <div>
+                {this.state.stores && this.state.stores.map(this.renderCard)}
+                <TheMap/>
+            </div>
+        );
+    }
+
 }
 
 export default OrdersPage;

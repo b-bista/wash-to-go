@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const passport = require('../middlewares/authentication');
 const { route } = require('./auth');
-const { Order, Customer, OrderItem, Business } = db;
+const { Business, Service } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -16,8 +16,13 @@ const { Order, Customer, OrderItem, Business } = db;
 
 //Find all user orders
 router.get('/', (req,res) => {
-  Order.findAll({where: {userId: req.user.id}})
-    .then(posts => res.json(posts));
+  Business.findAll({include: [Service]})
+    .then(businesses => res.json(businesses));
+});
+
+router.get('/:businessId/', (req,res) => {
+  Business.findByPk(req.params.businessId, {include: [Service]})
+    .then(businesses => res.json(businesses));
 });
 
 
@@ -45,11 +50,13 @@ router.post('/:businessId/createOrder', passport.isAuthenticated(),
       .then (business => {
         order.setBusiness(business);
       })
-      res.json(order);
     })
     .then(res => {
       res.json(res);
     })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
   }
 );
 
