@@ -11,6 +11,7 @@ import {
 import Geocode from "react-geocode";
 import { Descriptions } from 'antd';
 import AutoComplete from 'react-google-autocomplete';
+import "./marker.css";
 
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
@@ -437,8 +438,8 @@ onPlaceSelected = (place) => {
 
 
     return (
-<div style = {{padding: '1rem', margin: '0 auto', maxWidth: 1000}}>
-  <h1>WashToGo Locations</h1>
+<div className style = {{padding: '1rem', margin: '0 auto', maxWidth: 1000, marginLeft: '500px'}}>
+  <h1 style = {{textAlign: 'center'}}>WashToGo Locations</h1>
   <Descriptions bordered>
     <Descriptions.Item label="City">{this.state.city}</Descriptions.Item>
      <Descriptions.Item label="Area">{this.state.area}</Descriptions.Item>
