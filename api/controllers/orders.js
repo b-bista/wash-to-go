@@ -13,13 +13,23 @@ const { Order, Customer, OrderItem, Business } = db;
 //    PUT    /posts/:id
 //    DELETE /posts/:id 
 
-
-//Find all user orders
 router.get('/', (req,res) => {
-  Order.findAll({where: {userId: req.user.id}})
-    .then(posts => res.json(posts));
-});
 
+  Customer.findOne({
+    where: {userId: req.user.id}, 
+    include:{
+      model: Order, 
+      include:{model: Business}
+  }
+})
+  .then(
+    customer => res.json(customer)
+  )
+  .catch(
+    err => res.json(err)
+  )
+  
+});
 
 //handles creating an order
 router.post('/:businessId/createOrder', passport.isAuthenticated(),

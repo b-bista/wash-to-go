@@ -2,11 +2,27 @@ import React from 'react';
 import {Card, Button} from "react-bootstrap";
 
 
-function PreviousOrdersPage(props){
+class PreviousOrdersPage extends React.Component{
+
+    state = {
+        user: {}
+    }
+
+    componentDidMount(){
+        fetch("/api/orders/")
+        .then(res => res.json())
+        .then(user => {
+            this.setState({
+                user
+            });
+            console.log(this.state.user);
+        })
+        .catch(err => console.log("API ERROR: ", err));
+    }
 
     // convert to prop later 
     // using array dummy data 
-    const cardInfo =
+    cardInfo =
     [
         {
             image: "https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg", 
@@ -25,7 +41,7 @@ function PreviousOrdersPage(props){
         },
     ];
 
-    const renderCard = (card, index) => {
+    renderCard = (card, index) => {
         return (
             <div class="card-deck mt-5">
             <Card style={{width:"400px" }} key={index}>
@@ -42,13 +58,16 @@ function PreviousOrdersPage(props){
         );
     };
 
-    return (
-        <div>
-            <h3>Orders</h3>
-            <h6>Previous Orders</h6>
-                {cardInfo.map(renderCard)}
-        </div>
-    )
+    render () {
+        return (
+            <div>
+                <h3>Orders</h3>
+                <h6>Previous Orders</h6>
+                    {cardInfo.map(renderCard)}
+            </div>
+        )
+    }
+    
 }
 
 
