@@ -1,15 +1,10 @@
 import React from 'react';
-import {Card, Button} from "react-bootstrap";
+import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 // import GoogleMap from '../components/map';
 // import SimpleMap from '../components/maps';
 import TheMap from "../components/GoogleMap";
-<<<<<<< Updated upstream
-=======
-import "./marker.css";
-function OrdersPage(props){
->>>>>>> Stashed changes
-
+import "../components/marker.css";
 
 class OrdersPage extends React.Component{
 
@@ -57,13 +52,8 @@ class OrdersPage extends React.Component{
         return (
             <div class="card-deck">
             
-<<<<<<< Updated upstream
-            <Card style={{width:"400px" }} key={index} >
-            <Card.Img variant="top"  src='https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg' />
-=======
-            <Card style={{width:"400px", marginRight: '1400px'}} key={index} >
+            <Card style={{width:"400px"}} key={index} >
             <Card.Img variant="top"  src={card.image} />
->>>>>>> Stashed changes
             <Card.Body>
                 <Card.Title>{card.name}</Card.Title>
                 <Card.Text>
@@ -73,7 +63,7 @@ class OrdersPage extends React.Component{
                 {`${card.city}, ${card.state}, ${card.zipCode}`}
                 </Card.Text>
                 <Card.Text>
-                    {Math.random().toPrecision(2)}
+                    {Math.random().toPrecision(2)} miles away
                 </Card.Text>
                 <Card.Text>
                 <Link exact to={to}>
@@ -88,26 +78,17 @@ class OrdersPage extends React.Component{
         );
     };
 
-<<<<<<< Updated upstream
     render () {
         return (
-            <div>
-                {this.state.stores && this.state.stores.map(this.renderCard)}
-                <TheMap/>
-            </div>
+            <Container fluid>
+                <Row className="justify-content-md-center">
+                    <Col md="auto">{this.state.stores && this.state.stores.map(this.renderCard)}</Col>
+                    <Col> <TheMap/> </Col>
+                </Row>
+            </Container>
         );
     }
 
-=======
-    return (
-        <div>
-            {cardInfo.map(renderCard)}
-            <TheMap />
-        </div>
-    );
-    
-  
->>>>>>> Stashed changes
 }
 
 export default OrdersPage;

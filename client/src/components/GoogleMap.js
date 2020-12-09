@@ -438,7 +438,7 @@ onPlaceSelected = (place) => {
 
 
     return (
-<div className style = {{padding: '1rem', margin: '0 auto', maxWidth: 1000, marginLeft: '500px'}}>
+<div className style = {{padding: '1rem', margin: '0 auto', maxWidth: 1000}}>
   <h1 style = {{textAlign: 'center'}}>WashToGo Locations</h1>
   <Descriptions bordered>
     <Descriptions.Item label="City">{this.state.city}</Descriptions.Item>

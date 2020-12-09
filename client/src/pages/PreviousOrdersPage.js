@@ -67,7 +67,7 @@ class PreviousOrdersPage extends React.Component{
             <div>
                 <h3>Orders</h3>
                 <h6>Previous Orders</h6>
-                    {cardInfo.map(renderCard)}
+                    {this.cardInfo.map(this.renderCard)}
             </div>
         )
     }
