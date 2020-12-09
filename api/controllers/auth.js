@@ -2,6 +2,10 @@ const router = require('express').Router();
 const { User, Customer, Business } = require('../models');
 const passport = require('../middlewares/authentication');
 
+router.get('/getCustomer', (req,res) => {
+  Customer.findOne({where: {userId: req.user.id}})
+    .then(customer => res.json(customer));
+});
 
 router.post('/signup', (req, res) => {
   console.log("POST body: ", req.body);

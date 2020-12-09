@@ -6,25 +6,37 @@ import { Link } from 'react-router-dom';
 
 class OrderSummary extends React.Component{
 
+  
+
   state = {
+    customer: {},
     totalPrice: 0
   }
-
+  
   componentDidMount () {
+
     let {orderDetails} = this.props.location.state;  
 
     let totalPrice = 0;
     
     orderDetails.services.forEach(element => {
-      totalPrice += element.price;
+      totalPrice += element.price*element.loadSize;
     });
 
-    this.setState({totalPrice})
+    this.setState({totalPrice: totalPrice.toFixed(2)})
+
+    fetch("/api/auth/getCustomer")
+    .then(res => res.json())
+    .then(customer => {
+        this.setState({
+            customer
+        });
+    })
+    .catch(err => console.log("API ERROR: ", err));
   }
 
 
   makeOrder = (e) => {
-    e.preventDefault();
     let {orderDetails} = this.props.location.state;
     fetch(`/api/orders/${orderDetails.store.id}/createOrder`, {
       method: 'POST',
@@ -57,32 +69,54 @@ class OrderSummary extends React.Component{
         return (
             <div>
                 <Card>
-                <Card.Header as="h1" className="text-center">Order Summary</Card.Header>
+                <Card.Header as="h1" className="text-center">Confirm Order</Card.Header>
                 <Card.Img variant="top" src="https://www.powerhousearena.com/shop/media/catalog/product/cache/1/image/400x500/17f82f742ffe127f42dca9de82fb58b1/images/9781576876237.jpg"/>
     
                 <Card.Body>
                     <Card.Text>
-                      Prices will be calculated after weighing at the laundromat.
+                      Prices will be adjusted after weighing at the laundromat. 
+                      <p>You will not be charged until then.</p>
                     </Card.Text>
                     <ListGroup>
-                    <ListGroup.Item>Address: {store.address1}, {store.address2}, {store.city}, {store.state}, {store.zipCode} </ListGroup.Item>
-                    <ListGroup.Item>Number: {store.phone}</ListGroup.Item>
-                    <ListGroup.Item>Total price: {this.state.totalPrice}
+                    <ListGroup.Item>
+                      <Card.Title>Customer Information</Card.Title>
+                      <p>Name: {this.state.customer.firstName+" "+this.state.customer.lastName}</p>
+                      <p>Address: {this.state.customer.address1}, {this.state.customer.address2} 
+                      <p>{this.state.customer.city}, {this.state.customer.state}, {this.state.customer.zipCode} </p></p>
+                      <p>Phone: {this.state.customer.phone}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <Card.Title>Business Information</Card.Title>
+                      <p>Address: {store.address1}, {store.address2}, {store.city}, {store.state}, {store.zipCode} </p>
+                      <p>Phone: {store.phone}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <Card.Title>Order Details:</Card.Title>
+                      {
+                        services && services.map(service => {
+                          return (
+                            <p>{`${services.indexOf(service)+1}.   ${service.name} - $${service.price*service.loadSize} total for ${service.loadSize} est lbs`}</p>
+                          )
+                        })
+                      }
+                      <p>Total price: ${this.state.totalPrice}</p>
                     </ListGroup.Item>
                     </ListGroup>
-
-                    <Button variant="primary"> 
-                      <Link to ={{
+                      
+                    <Link to ={{
                       pathname: "/ordered", 
                       state: {
                         store: store,
+                        customer: this.state.customer,
                         services: services,
                         totalPrice: this.state.totalPrice
                       }}
                       }>
-                        Submit
-                      </Link>
-                    </Button>
+                        <Button variant="primary">
+                          Submit
+                        </Button> 
+                    </Link>
+                    
                     
                 </Card.Body>
                 </Card>
