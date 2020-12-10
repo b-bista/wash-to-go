@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
@@ -16,8 +16,9 @@ import OrderPage from './pages/OrderPage';
 import './App.css';
 import AccountPage from './pages/AccountPage';
 
+
 function Navigation(props) {
-  
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3" >
       <Link className="navbar-brand" to="/">WashToGo</Link>
@@ -51,23 +52,23 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path='/ordered' component={Ordered} />
-                <Route path='/order/:businessId' component={OrderPage} />
-                <Route path='/summary' component={OrderSummary} />
-                <Route path="/order" component={OrdersPage} />
-                <Route path="/home" component={HomePage} />
-                <Route path="/edit-account" component={AccountPage} />
-                <Route path="/previous-orders" component={PreviousOrdersPage} />
-                <Route path="/" component={LandingPage} />
-              </Switch>
-            </div>
+      <Router>
+        <Navigation />
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+            <Switch>
+              <Route path='/ordered' component={Ordered} />
+              <Route path='/order/:businessId' component={OrderPage} />
+              <Route path='/summary' component={OrderSummary} />
+              <Route path="/order" component={OrdersPage} />
+              <Route path="/home" component={HomePage} />
+              <Route path="/edit-account" component={AccountPage} />
+              <Route path="/previous-orders" component={PreviousOrdersPage} />
+              <Route path="/" component={LandingPage} />
+            </Switch>
           </div>
-        </Router>
+        </div>
+      </Router>
     );
   }
 }
